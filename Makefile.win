@@ -1,0 +1,33 @@
+# Project: NPeleng
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = 
+OBJ  = main.o myMath.o $(RES)
+LINKOBJ  = main.o myMath.o $(RES)
+LIBS =  -L"J:/DEV/Dev-Cpp/lib"  -g3 
+INCS =  -I"J:/DEV/Dev-Cpp/include" 
+CXXINCS =  -I"J:/DEV/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"J:/DEV/Dev-Cpp/include/c++/3.4.2/backward"  -I"J:/DEV/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"J:/DEV/Dev-Cpp/include/c++/3.4.2"  -I"J:/DEV/Dev-Cpp/include" 
+BIN  = NPeleng.exe
+CXXFLAGS = $(CXXINCS)   -g3
+CFLAGS = $(INCS) -DBUILD_TEST -g3   -g3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before NPeleng.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "NPeleng.exe" $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+myMath.o: myMath.c
+	$(CC) -c myMath.c -o myMath.o $(CFLAGS)
